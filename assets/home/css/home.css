@@ -1,0 +1,33 @@
+.list_piutang {
+    border: 1px solid #dedede;
+}
+
+.list_piutang > .header {
+    padding: 5px;
+    border-bottom: 1px solid #dedede;
+}
+
+.list_piutang > .header > label {
+    font-size: 14pt;
+}
+
+.list_piutang > .body {
+    padding: 0px;
+    text-align: center;
+    font-size: 8pt;
+}
+
+.notif_contain {
+    padding: 5px;
+}
+
+.notif_contain > .notif_contain_border {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: left;
+}
+
+.notif_contain > .notif_contain_border:hover {
+    background-color: #dedede;
+}
