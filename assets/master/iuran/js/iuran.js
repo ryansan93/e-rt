@@ -1,10 +1,10 @@
-var ki = {
+var i = {
 	startUp: function(){
-		ki.getLists();
+		i.getLists();
 	}, // end - startUp
 
 	addForm: function() {
-		$.get('master/KomponenIuran/addForm',{
+		$.get('master/Iuran/addForm',{
 			},function(data){
 			var _options = {
 				className : 'veryWidth',
@@ -18,6 +18,10 @@ var ki = {
 				if ( $(tbody).find('.modal-body tr').length <= 1 ) {
 			        $(this).find('tr #btn-remove').addClass('hide');
 			    };
+
+				$('[data-tipe=integer],[data-tipe=angka],[data-tipe=decimal],[data-tipe=decimal3],[data-tipe=decimal4],[data-tipe=number]').each(function(){
+					priceFormat( $(this) );
+				});
 			});
 		},'html');
 	}, // end - addForm
@@ -27,7 +31,7 @@ var ki = {
 			'kode': $(elm).attr('data-kode')
 		};
 
-		$.get('master/KomponenIuran/editForm',{
+		$.get('master/Iuran/editForm',{
 			'params': params
 			},function(data){
 			var _options = {
@@ -42,6 +46,10 @@ var ki = {
 				if ( $(tbody).find('.modal-body tr').length <= 1 ) {
 					$(this).find('tr #btn-remove').addClass('hide');
 				};
+
+				$('[data-tipe=integer],[data-tipe=angka],[data-tipe=decimal],[data-tipe=decimal3],[data-tipe=decimal4],[data-tipe=number]').each(function(){
+					priceFormat( $(this) );
+				});
 			});
 		},'html');
 	}, // end - editForm
@@ -54,7 +62,7 @@ var ki = {
 		}
 
 		$.ajax({
-			url : 'master/KomponenIuran/getLists',
+			url : 'master/Iuran/getLists',
 			data : {},
 			dataType : 'HTML',
 			type : 'GET',
@@ -86,11 +94,11 @@ var ki = {
 			bootbox.confirm('Apakah anda yakin ingin menyimpan data ?', function(result){
 				if (result) {
 					var data = {
-						'nama' : $('input.keterangan').val()
+						'nominal' : numeral.unformat( $('input.nominal').val() )
 					};
 
 					$.ajax({
-						url : 'master/KomponenIuran/save',
+						url : 'master/Iuran/save',
 						dataType: 'json',
 						type: 'post',
 						data: {
@@ -103,7 +111,7 @@ var ki = {
 							hideLoading();
 							if ( data.status == 1 ) {
 								bootbox.alert(data.message, function(){
-									ki.getLists();
+									i.getLists();
 									bootbox.hideAll();
 								});
 							} else {
@@ -134,11 +142,11 @@ var ki = {
 				if ( result ) {
 					var data = {
 						'kode' : $('input.kode').val(),
-						'nama' : $('input.keterangan').val()
+						'nominal' : numeral.unformat( $('input.nominal').val() )
 					};
 
 					$.ajax({
-						url : 'master/KomponenIuran/edit',
+						url : 'master/Iuran/edit',
 						dataType: 'json',
 						type: 'post',
 						data: {
@@ -151,7 +159,7 @@ var ki = {
 							hideLoading();
 							if ( data.status == 1 ) {
 								bootbox.alert(data.message, function(){
-									ki.getLists();
+									i.getLists();
 									bootbox.hideAll();
 								});
 							} else {
@@ -172,7 +180,7 @@ var ki = {
 		bootbox.confirm('Apakah anda yakin ingin menghapus data ?', function(result){
 			if ( result ) {
 				$.ajax({
-					url : 'master/KomponenIuran/delete',
+					url : 'master/Iuran/delete',
 					dataType: 'json',
 					type: 'post',
 					data: {
@@ -185,7 +193,7 @@ var ki = {
 						hideLoading();
 						if ( data.status == 1 ) {
 							bootbox.alert(data.message, function(){
-								ki.getLists();
+								i.getLists();
 								bootbox.hideAll();
 							});
 						} else {
@@ -199,4 +207,4 @@ var ki = {
 	}, // end - delete
 };
 
-ki.startUp();
+i.startUp();

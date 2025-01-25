@@ -1,16 +1,27 @@
-<?php if ( !empty($data) && count($data) > 0 ): ?>
-	<?php foreach ($data as $k_data => $v_data): ?>
-		<tr class="search cursor-p data" onclick="kk.changeTabActive(this)" data-href="action" data-kode="<?php echo $v_data['no_kk']; ?>" data-edit="">
-			<td class="text-center" data-order="<?php echo str_replace('-', '/', $v_data['tgl_kk']); ?>"><?php echo strtoupper(tglIndonesia($v_data['tgl_kk'], '-', ' ')); ?></td>
-			<td><?php echo strtoupper($v_data['no_kk']); ?></td>
-			<td><?php echo !empty($v_data['nama_supl']) ? strtoupper($v_data['nama_supl']) : '-'; ?></td>
-			<td><?php echo !empty($v_data['keterangan']) ? strtoupper($v_data['keterangan']) : '-'; ?></td>
-			<td><?php echo strtoupper($v_data['nama_bank']); ?></td>
-			<td class="text-right"><?php echo formatAngka($v_data['nilai']); ?></td>
-		</tr>
-	<?php endforeach ?>
-<?php else: ?>
-	<tr>
-		<td colspan="6">Data tidak ditemukan.</td>
-	</tr>
-<?php endif ?>
+<?php if ( !empty($data) ) { ?>
+    <?php foreach ($data as $key => $value) { ?>
+        <tr class="data">
+            <td><?php echo str_replace('-', '/', $value['tanggal']); ?></td>
+            <td><?php echo $value['no_bukti']; ?></td>
+            <td class="text-right"><?php echo formatAngka($value['nominal']); ?></td>
+            <td><?php echo $value['keterangan']; ?></td>
+            <td>
+                <a href="uploads/kas_keluar/<?php echo $value['tanggal']; ?>/<?php echo $value['lampiran']; ?>" target="_blank"><?php echo $value['lampiran']; ?></a>
+            </td>
+            <td>
+                <div class="col-xs-12 no-padding">
+                    <div class="col-xs-6 no-padding" style="padding-right: 5px;">
+                        <button type="button" class="btn btn-primary col-xs-12" onclick="kk.editForm(this)" data-kode="<?php echo $value['kode']; ?>"><i class="fa fa-edit"></i></button>
+                    </div>
+                    <div class="col-xs-6 no-padding" style="padding-left: 5px;">
+                        <button type="button" class="btn btn-danger col-xs-12" onclick="kk.delete(this)" data-kode="<?php echo $value['kode']; ?>"><i class="fa fa-trash"></i></button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+    <?php } ?>
+<?php } else { ?>
+    <tr>
+        <td colspan="6">Data tidak ditemukan.</td>
+    </tr>
+<?php } ?>

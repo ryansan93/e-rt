@@ -600,7 +600,8 @@ function showLoading(pesan = "Please wait . . . "){
 function hideLoading(){
      if (s_loading != null ) {
         s_loading.remove();
-        $('.modal-backdrop').remove();
+        // $('.modal-backdrop').remove();
+        $('.modal-backdrop:last()').remove();
         $('body').removeClass('modal-open');
         $('body').css(
             'padding-right',0

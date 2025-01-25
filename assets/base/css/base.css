@@ -1,4 +1,4 @@
-/* CSS UD LANCAR */
+/* CSS E-RT */
 .sidebar-heading a, .sidebar-heading a:hover {
   color: unset;
   text-decoration: none;
@@ -130,7 +130,23 @@ span.select2 {
   font-size: 7pt;
 }
 /* END - INPUT GROUP DATE */
-/* END - CSS UD LANCAR */
+/* INPUT FILE */
+.lampiran-contain-btn {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.lampiran-contain-btn:hover {
+  background-color: #ededed;
+}
+
+.lampiran-contain-btn.has-error {
+  border-color: #a94442;
+}
+/* END - INPUT FILE */
+/* END - CSS E-RT */
 
 #page-content-wrapper {
     min-width: 100% !important;

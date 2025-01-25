@@ -11,9 +11,9 @@
 			<div class="col-xs-12 no-padding">
 				<hr>
 			</div>
-			<div class="col-xs-12 search left-inner-addon no-padding">
+			<!-- <div class="col-xs-12 search left-inner-addon no-padding">
 				<i class="fa fa-search"></i><input class="form-control" type="search" data-table="tblRiwayat" placeholder="Search" onkeyup="filter_all(this)">
-			</div>
+			</div> -->
 			<small>
 				<table class="table table-bordered table-hover tblRiwayat" id="dataTable" width="100%" cellspacing="0">
 					<thead>
@@ -26,7 +26,7 @@
 					<tbody>
 						<tr>
 							<td colspan="3">Data tidak ditemukan.</td>
-	                   </tr>
+	                   	</tr>
 					</tbody>
 				</table>
 			</small>

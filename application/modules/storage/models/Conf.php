@@ -29,8 +29,8 @@ class Conf extends Eloquent
 	}
 
 	public function getNextId(){
-		$id = $this->whereRaw("SUBSTRING(".$this->primaryKey.",4,4) = concat(cast(right(year(current_timestamp),2) as char(2)), LPAD(month(CURDATE()), 2, 0))")
-								->selectRaw("CONCAT('".$this->kodeTable."', right(year(current_timestamp),2), LPAD(month(CURDATE()), 2, 0), LPAD((substring(coalesce(max(".$this->primaryKey."),'000'), 8, 3)+1), 3, 0)) as nextId")
+		$id = $this->whereRaw("SUBSTRING(".$this->primaryKey.",(LENGTH('".$this->kodeTable."')+1),4) = concat(cast(right(year(current_timestamp),2) as char(2)), LPAD(month(CURDATE()), 2, 0))")
+								->selectRaw("CONCAT('".$this->kodeTable."', right(year(current_timestamp),2), LPAD(month(CURDATE()), 2, 0), LPAD((substring(coalesce(max(".$this->primaryKey."),'000'), ((LENGTH('".$this->kodeTable."')+1)+4), 3)+1), 3, 0)) as nextId")
 								->first();
 		return $id->nextId;
 	}

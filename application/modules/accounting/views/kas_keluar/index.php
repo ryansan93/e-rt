@@ -2,32 +2,37 @@
 	<div class="col-lg-12 detailed">
 		<form role="form" class="form-horizontal">
 			<div class="col-xs-12 no-padding">
-				<div class="panel-heading no-padding">
-					<ul class="nav nav-tabs nav-justified">
-						<li class="nav-item">
-							<a class="nav-link active" data-toggle="tab" href="#riwayat" data-tab="riwayat">RIWAYAT KAS KELUAR</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#action" data-tab="action">KAS KELUAR</a>
-						</li>
-					</ul>
-				</div>
-				<div class="panel-body no-padding">
-					<div class="tab-content">
-						<div id="riwayat" class="tab-pane fade show active" role="tabpanel" style="padding-top: 10px;">
-							<?php echo $riwayat; ?>
-						</div>
-
-						<div id="action" class="tab-pane fade" role="tabpanel" style="padding-top: 10px;">
-							<?php if ( $akses['a_submit'] == 1 ) { ?>
-								<?php echo $add_form; ?>
-							<?php } else { ?>
-								<h4>KAS KELUAR</h4>
-							<?php } ?>
-						</div>
-					</div>
-				</div>
+				<?php if ( $akses['a_submit'] == 1 ): ?>
+					<button id="btn-add" type="button" class="col-xs-12 btn btn-primary cursor-p" title="ADD" onclick="kk.addForm(this)"> 
+						<i class="fa fa-plus" aria-hidden="true"></i> ADD
+					</button>
+				<?php endif ?>
 			</div>
+			<div class="col-xs-12 no-padding">
+				<hr>
+			</div>
+			<!-- <div class="col-xs-12 search left-inner-addon no-padding">
+				<i class="fa fa-search"></i><input class="form-control" type="search" data-table="tblRiwayat" placeholder="Search" onkeyup="filter_all(this)">
+			</div> -->
+			<small>
+				<table class="table table-bordered table-hover tblRiwayat" id="dataTable" width="100%" cellspacing="0">
+					<thead>
+						<tr>
+							<th class="col-xs-1">Tanggal</th>
+							<th class="col-xs-1">No. Bukti</th>
+							<th class="col-xs-2">Nominal</th>
+							<th class="col-xs-4">Keterangan</th>
+							<th class="col-xs-2">Lampiran</th>
+							<th class="col-xs-1">Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td colspan="6">Data tidak ditemukan.</td>
+	                   	</tr>
+					</tbody>
+				</table>
+			</small>
 		</form>
 	</div>
 </div>
